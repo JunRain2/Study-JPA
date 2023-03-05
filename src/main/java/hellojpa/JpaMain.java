@@ -15,14 +15,21 @@ public class JpaMain {
         tx.begin();
 
         try {
-            Member member = new Member(200L, "member200");
+            Member member = new Member();
+            member.setUsername("A");
+
+            Member member1 = new Member();
+            member1.setUsername("B");
+
+            Member member2 = new Member();
+            member2.setUsername("C");
+
             em.persist(member);
+            em.persist(member1);
+            em.persist(member2);
 
-            em.flush(); // DB에 바로 반영
-
-            System.out.println("================================");
             tx.commit();
-        } catch (Exception e){
+        } catch (Exception e) {
 
             tx.rollback();
         } finally {

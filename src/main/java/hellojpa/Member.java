@@ -1,20 +1,21 @@
 package hellojpa;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
+@SequenceGenerator(name="member_seq_generator", sequenceName = "member_seq")
 public class Member {
+
     @Id
+    @GeneratedValue
     private Long id;
-    private String name;
 
-    public Member(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+    @Column(name = "name", nullable = false)
+    private String username;
 
-    // jpa는 내부적으로 리플렉션을 함 --> 동적으로 객체를 생성해야 하기 때문에 기본 생성자가 존재해야함.
     public Member() {
     }
 
@@ -26,11 +27,11 @@ public class Member {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
