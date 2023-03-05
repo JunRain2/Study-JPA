@@ -23,9 +23,7 @@ public class Member {
     @JoinColumn(name = "TEAM_ID")
     private Team team;
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
 
     public void setId(Long id) {
         this.id = id;
@@ -45,5 +43,12 @@ public class Member {
 
     public void setTeam(Team team) {
         this.team = team;
+    }
+
+    // Team 을 세팅하면서 동시에 member를 세팅 --> 하나를 세팅하면 양쪽에 세팅
+    // 연관관계 편의 메소드
+    public void changeTeam(Team team) {
+        this.team = team;
+        team.getMembers().add(this);
     }
 }

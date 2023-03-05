@@ -24,12 +24,10 @@ public class JpaMain {
 
             Member member = new Member();
             member.setUsername("member1");
-            member.setTeam(team);
+            member.changeTeam(team); // 선언과 동시에 양방향으로 만들어줌.
             em.persist(member);
 
-            // 이렇게 해야 DB에서 값을 깔끔하게 가져옴.
-            em.flush();
-            em.clear();
+            team.addMember(member);
 
             // 조회
             Member findMember = em.find(Member.class, member.getId());
