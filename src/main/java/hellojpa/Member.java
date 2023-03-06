@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.concurrent.locks.Lock;
 
 @Entity
-public class Member {
+public class Member extends BaseEntity {
 
     @Id
     @GeneratedValue
@@ -40,6 +40,9 @@ public class Member {
     public void setUsername(String username) {
         this.username = username;
     }
+
+
+
 
     public Member() {
     }
